@@ -1,0 +1,14 @@
+{
+    "name": "manga/bot",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "require": {
+        "fabpot/goutte": "^4.0",
+        "jikan-me/jikan": "^1.15",
+        "telegram-bot/api": "^2.3",
+        "vlucas/phpdotenv": "^5.3"
+    }
+}
