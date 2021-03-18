@@ -28,7 +28,7 @@ class Otaku
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => [
             "x-rapidapi-host: jikan1.p.rapidapi.com",
-            "x-rapidapi-key: b40354067cmsh5b68cf2b90a00dfp1987bajsn7598a33a65c0"
+            "x-rapidapi-key: ".$_ENV['RAPID_TOKEN']
             ],
             ]
         );
@@ -103,7 +103,7 @@ class Otaku
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => [
             "x-rapidapi-host: jikan1.p.rapidapi.com",
-            "x-rapidapi-key: b40354067cmsh5b68cf2b90a00dfp1987bajsn7598a33a65c0"
+            "x-rapidapi-key: ".$_ENV['RAPID_TOKEN']
             ],
             ]
         );
