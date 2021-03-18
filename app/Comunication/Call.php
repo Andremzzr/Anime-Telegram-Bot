@@ -25,7 +25,18 @@ class Call
         $bot->sendMessage($id, $message);
     }
 
+<<<<<<< HEAD
+    /**
+     * Send top animes that will be release
+     *
+     * @param  array $array
+     * @param  int   $id
+     * @return void
+     */
+    public static function sendTopAnimes(array $array, int $id )
+=======
     public static function sendTopAnimes(array $array, $id )
+>>>>>>> b5c3a2f1a7fd0b0d152323d15abdb8c06033807e
     {   
         $bot = new BotApi($_ENV['TELEGRAM_BOT_TOKEN']);
         
@@ -35,16 +46,27 @@ class Call
 
 
         $bot->sendMessage($id, $message);
+<<<<<<< HEAD
+        $bot->sendMessage($id, "========================");
+=======
         $bot->sendMessage($id, "==================");
+>>>>>>> b5c3a2f1a7fd0b0d152323d15abdb8c06033807e
         sleep(3.5);
         foreach ($array as $value) {
             if ($value['start_date'] == null) {
                 $value['start_date'] = "Upcomming";
             }
+<<<<<<< HEAD
+            $final_message =  "TITLE: ".$value['title'].PHP_EOL."START DATE: ".$value['start_date'].PHP_EOL."URL: ".$value['url'];
+            //SENDING THE MESSAGE
+            $bot->sendMessage($id, $final_message);
+            $bot->sendMessage($id, "========================");
+=======
             $final_message =  "TITLE: ".$value['title'].". START DATE: ".$value['start_date'].". URL: ".$value['url'];
             //SENDING THE MESSAGE
             $bot->sendMessage($id, $final_message);
             $bot->sendMessage($id, "==================");
+>>>>>>> b5c3a2f1a7fd0b0d152323d15abdb8c06033807e
             sleep(2);
         }
         
@@ -65,7 +87,11 @@ class Call
         $message = '=== THE RESULT WHEN YOU SEARCH THIS === ';
 
         $bot->sendMessage($id, $message);
+<<<<<<< HEAD
+        $bot->sendMessage($id, "========================");
+=======
         $bot->sendMessage($id, "==================");
+>>>>>>> b5c3a2f1a7fd0b0d152323d15abdb8c06033807e
         sleep(3.5);
 
         foreach ($anime as $value) {
@@ -82,9 +108,15 @@ class Call
             $media_array->addItem($media);
             $bot->sendMediaGroup($id, $media_array);
 
+<<<<<<< HEAD
+            $final_message = "Title: ".$value['title'].PHP_EOL."Id for seach: ".$value['id'].PHP_EOL."Synopsis: ".$value['synopsis'].PHP_EOL."Score: ".$value['score'].PHP_EOL."Status: ".$value['airing'];  
+            $bot->sendMessage($id, $final_message);
+            $bot->sendMessage($id, "========================");
+=======
             $final_message = "Title: ".$value['title'].PHP_EOL."Synopsis: ".$value['synopsis'].PHP_EOL."Score: ".$value['score'].PHP_EOL."Status: ".$value['airing'];  
             $bot->sendMessage($id, $final_message);
             $bot->sendMessage($id, "==================");
+>>>>>>> b5c3a2f1a7fd0b0d152323d15abdb8c06033807e
             sleep(3.75);
                               
         }
@@ -93,8 +125,36 @@ class Call
 
     }
 
+<<<<<<< HEAD
+    /**
+     * Get and set last episode message
+     *
+     * @param  array   $array
+     * @param  integer $id
+     * @return void
+     */
+    public static function getLastEpisode(array $array,int $id)
+    {
+        $bot = new BotApi($_ENV['TELEGRAM_BOT_TOKEN']);
+
+        $bot->sendMessage($id, "== Last Episode Infos ==");
+        $last_episode_date =  substr($array['aired'], 0, 10);
+        sleep(2);
+        $final_message ='Title: '.$array['title']."- ".$array['title_japanese'].PHP_EOL."Number: ".$array['episode_id'].PHP_EOL."Aired: ".$last_episode_date;
+        $bot->sendMessage($id, $final_message);
+
+    }
 
 
+    /**
+     * Get last message from the telegram's chat and activate the commands 
+     *
+     * @return void
+     */
+=======
+
+
+>>>>>>> b5c3a2f1a7fd0b0d152323d15abdb8c06033807e
     public static function getLastMessage()
     {
         /**
@@ -113,7 +173,11 @@ class Call
         $key_message = false;
 
         $array_comandos = [
+<<<<<<< HEAD
+            "/getinfo","/show10","/lastep"
+=======
             "/getinfo","/show10"
+>>>>>>> b5c3a2f1a7fd0b0d152323d15abdb8c06033807e
         ];
 
         while (true) {
@@ -150,13 +214,27 @@ class Call
                             $key_message = $last_message;
                             continue;
                         }
+<<<<<<< HEAD
+                        elseif ($last_message == '/show10') {
+=======
                         if ($last_message == '/show10') {
+>>>>>>> b5c3a2f1a7fd0b0d152323d15abdb8c06033807e
                             Call::sendMessage('Wait a second... Send me anything to continue', $lista['message']['chat']['id']);
                             
                             $next_id_message =$last_id_message +1;
                             $key_message = $last_message;
                             continue;
                         }
+<<<<<<< HEAD
+                        elseif ($last_message == '/lastep') {
+                            Call::sendMessage('Tell me the anime id (needs to be a number)', $lista['message']['chat']['id']);
+                            $next_id_message =$last_id_message +1;
+                            $key_message = $last_message;
+                            continue;
+                        }
+
+=======
+>>>>>>> b5c3a2f1a7fd0b0d152323d15abdb8c06033807e
                         if (in_array($key_message, $array_comandos)) {
                             switch ($key_message) {
                             case '/getinfo':
@@ -178,11 +256,26 @@ class Call
                                 echo "Enviado".PHP_EOL;
                                 echo "=======".PHP_EOL;
                                 break;
+<<<<<<< HEAD
+                            
+                            case '/lastep':
+
+                                Call::getLastEpisode(Otaku::getLastEpisode($lista['message']['text']), $lista['message']['chat']['id']);
+                                
+                                $next_id_message =$last_id_message +1;
+                                $key_message = false;
+                                echo "Enviado".PHP_EOL;
+                                echo "=======".PHP_EOL;
+                                break;
+                                
+                            }
+=======
                             }
                             
                                
                                 
                                 
+>>>>>>> b5c3a2f1a7fd0b0d152323d15abdb8c06033807e
                                 
 
                         }

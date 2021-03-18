@@ -28,7 +28,11 @@ class Otaku
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => [
             "x-rapidapi-host: jikan1.p.rapidapi.com",
+<<<<<<< HEAD
+            "x-rapidapi-key: ".$_ENV['TOKEN_RAPID']
+=======
             "x-rapidapi-key: ".$_ENV['RAPID_TOKEN']
+>>>>>>> b5c3a2f1a7fd0b0d152323d15abdb8c06033807e
             ],
             ]
         );
@@ -103,7 +107,11 @@ class Otaku
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => [
             "x-rapidapi-host: jikan1.p.rapidapi.com",
+<<<<<<< HEAD
+            "x-rapidapi-key: ".$_ENV['TOKEN_RAPID']
+=======
             "x-rapidapi-key: ".$_ENV['RAPID_TOKEN']
+>>>>>>> b5c3a2f1a7fd0b0d152323d15abdb8c06033807e
             ],
             ]
         );
@@ -139,7 +147,12 @@ class Otaku
                                 "image_url" => $array_info['image_url'],
                                 "airing" => $array_info['airing'],
                                 "score" => $array_info['score'],
+<<<<<<< HEAD
+                                "synopsis" => $array_info['synopsis'],
+                                "id" => $array_info['mal_id']
+=======
                                 "synopsis" => $array_info['synopsis']
+>>>>>>> b5c3a2f1a7fd0b0d152323d15abdb8c06033807e
                         ];
                         $count++;
                     }
@@ -155,5 +168,54 @@ class Otaku
     }
 
 
+<<<<<<< HEAD
+    /**
+     * Get last episode from the anime id 
+     *
+     * @param  integer $id
+     * @return array
+     */
+    public static function getLastEpisode(int $id)
+    {
+        $curl = curl_init();
+
+        curl_setopt_array(
+            $curl, [
+            CURLOPT_URL => "https://jikan1.p.rapidapi.com/anime/".$id."/episodes",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => [
+            "x-rapidapi-host: jikan1.p.rapidapi.com",
+            "x-rapidapi-key: ".$_ENV['TOKEN_RAPID']
+            ],
+            ]
+        );
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if ($err) {
+            echo "cURL Error #:" . $err;
+        } else {
+            $response = (array) $response;
+            $response = json_decode($response[0], true);
+
+
+            $last_episode = end($response['episodes']);
+
+            return $last_episode;
+
+        }
+    }
+}
+=======
 
 }
+>>>>>>> b5c3a2f1a7fd0b0d152323d15abdb8c06033807e
